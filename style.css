@@ -124,6 +124,10 @@ main {
         width: 100%;
     }
 
+    header{
+        font-size: 50%;
+    }
+
     .cards{
         display: flex;
         flex-direction: column;
