@@ -1,0 +1,139 @@
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1e90ff;
+    text-align: center;
+    padding: 0 auto;
+    color: white;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    width: 100%;
+}
+
+body {
+    margin: 0;
+    background-color: rgb(14, 14, 14);
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+main {
+    display: flex;
+    width: 80%;
+    background-color: rgb(39, 39, 39);
+    justify-content: center;
+    align-items: center;
+    padding: 25px 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #222;
+    margin: 20px auto;
+}
+
+#banner{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 auto;
+    width: 70%;
+    margin: 25px;
+}
+
+#content {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 auto;
+    color: white;
+    text-align: center;
+}
+
+.button{
+    background-color: #ca0101;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    align-items: normal;
+    font-size: 16px;;
+    animation-duration: 0.5s;
+}
+
+.button:hover{
+    background-color: #ff0000;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.button:active{
+    background-color: #bd0000;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+
+#buttons{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    gap: 20px;
+}
+
+.negrito{
+    font-weight: bold;
+}
+
+.cards{
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    margin: 20px auto;
+}
+
+.card{
+    background-color:#414040;
+    width: 250px;
+    box-shadow: 0 0 10px #414040;
+    border-radius: 10px;
+}
+
+.card img{
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+}
+
+@media (max-width: 600px){
+    #banner{
+        width: 100%;
+    }
+
+    .cards{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .card{
+        width: 100%;
+    }
+
+}
