@@ -1,10 +1,14 @@
 document.addEventListener("DOMContentLoaded", event => {
     buscarInscritos();
+    construirModal();
+    const temaLocal = localStorage.getItem('tema');
+    document.body.setAttribute('data-theme', temaLocal || 'light');
 });
 
 function alterarTema() {
     const tema = document.body.getAttribute('data-theme');
     const novoTema = tema == 'dark' ? 'light' : 'dark';
+    localStorage.setItem('tema', novoTema);
     document.body.setAttribute('data-theme', novoTema);
 
     const btTema = document.getElementById('btTema');
@@ -13,6 +17,32 @@ function alterarTema() {
         btTema.textContent = "Dark"
     }
 }
+
+function construirModal(){
+    const botaoSaibaMais = document.getElementById('saibaMais');
+    const modal = document.getElementById('modal');
+    const modalImg = document.getElementById('modalImg');
+
+    modalImg.addEventListener('click', () => {
+        modal.classList.remove('hidden');
+        modalImg.src = "https://picsum.photos/200/200";
+    });
+
+    botaoSaibaMais.addEventListener('click', () => {
+        modal.classList.remove('hidden');
+    })
+
+    const botaoFechar = document.getElementById('fecharModal');
+    botaoFechar.addEventListener('click', () => {
+        modal.classList.add('hidden');
+    })
+
+    window.addEventListener('click', (event) => {
+        if (event.target == modal) {
+            modal.classList.add('hidden');
+        }
+    })
+};
 
 function testButton() {
     open('https://www.google.com');
