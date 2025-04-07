@@ -2,8 +2,36 @@ document.addEventListener("DOMContentLoaded", event => {
     buscarInscritos();
     construirModal();
     const temaLocal = localStorage.getItem('tema');
+    const linguagemLocal = localStorage.getItem('linguagem');
     document.body.setAttribute('data-theme', temaLocal || 'light');
 });
+
+let idiomaAtual = 'pt';
+
+function alterarIdioma() {
+    idiomaAtual = idiomaAtual == 'pt' ? 'en' : 'pt';
+    carregarIdioma(idiomaAtual);
+}
+
+function carregarIdioma(idioma) {
+    fetch(`json/${idioma}.json`).then(data => data.json()).then(data => {
+        traduzirPagina(data);
+    });
+}
+
+function traduzirPagina(linguagem) {
+    document.querySelectorAll("[data-i18n]").forEach(elemento => {
+        const chave = elemento.getAttribute("data-i18n");
+        elemento.textContent = linguagem[chave];
+    });
+
+    document.querySelectorAll("[data-i18n-alt").forEach(elemento => {
+        const chave = elemento.getAttribute("data-i18n-alt");
+        if (linguagem[chave]) {
+            elemento.setAttribute("alt", linguagem[chave]);
+        }
+    });
+};
 
 function alterarTema() {
     const tema = document.body.getAttribute('data-theme');
@@ -18,7 +46,7 @@ function alterarTema() {
     }
 }
 
-function construirModal(){
+function construirModal() {
     const botaoSaibaMais = document.getElementById('saibaMais');
     const modal = document.getElementById('modal');
     const modalImg = document.getElementById('modalImg');
@@ -49,7 +77,8 @@ function testButton() {
 }
 
 function buscarInscritos() {
-    fetch("https://jsonplaceholder.typicode.com/users").then(response =>  response.json()).then(response => {const divInscritos = document.getElementById('inscritos');
+    fetch("https://jsonplaceholder.typicode.com/users").then(response => response.json()).then(response => {
+        const divInscritos = document.getElementById('inscritos');
         response.forEach(user => {
             const novoParagrafo = document.createElement('p');
             novoParagrafo.textContent = `nome: ${user.name}`;
